@@ -7,8 +7,8 @@ var clickbutton = document.getElementById("buildbutton").onclick=getMap;
 function getMap(){
   request(buildURL(), function(error, response, body){ //request function takes a URL and a callback as parameters
     if(!error && response.statusCode == 200) {
-      var newbody = JSON.parse(body)
-      var coords = (newbody.results[0].geometry.location)
+      body = JSON.parse(body)// parsing body
+      var coords = (body.results[0].geometry.location)//accesssing coordinates from JSON response
       centreMapOnAddress(coords.lat, coords.lng)
     };
   });
@@ -27,7 +27,7 @@ function buildURL() { //This function returns a URL for the request and is proba
   return(newrequestUrl)
 }
 
-function centreMapOnAddress(lat, lon){ //takes lat and long in
+function centreMapOnAddress(lat, lon){ //this function just follows the steps on http://www.street-directory.com.au/sd3/mapAPI/index.php
   var myMap = new JMap(document.getElementById("map-canvas"));
   var myLonLat = new JLonLat(lon,lat);
   var point = new JLonLat(lon,lat);
