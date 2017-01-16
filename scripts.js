@@ -1,5 +1,5 @@
-var request = require('request');
-var APIkey = "&key=AIzaSyD3xpq_3z5c0wWWPHeOckZ3AKzylC5anOQ"
+var request = require('request');//importing the npm http request library, probably irrelevant to you guys
+var APIkey = "&key=AIzaSyD3xpq_3z5c0wWWPHeOckZ3AKzylC5anOQ"//my API key, please use responsibly...
 var requestURL = "https://maps.googleapis.com/maps/api/geocode/json?address="
 
 var clickbutton = document.getElementById("buildbutton").onclick=getMap;
