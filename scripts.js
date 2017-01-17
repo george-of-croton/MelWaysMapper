@@ -1,14 +1,19 @@
 var request = require('request');//importing the npm http request library, probably irrelevant to you guys
+var fs = require('fs')
+var webshot = require('webshot')
+
 var APIkey = "&key=AIzaSyD3xpq_3z5c0wWWPHeOckZ3AKzylC5anOQ"//my API key, please use responsibly...
 var requestURL = "https://maps.googleapis.com/maps/api/geocode/json?address="
 
 var clickbutton = document.getElementById("buildbutton").onclick=getMap;
 
+
 function getMap(){
   request(buildURL(), function(error, response, body){ //request function takes a URL and a callback as parameters
     if(!error && response.statusCode == 200) {
-      body = JSON.parse(body)// parsing body
-      var coords = (body.results[0].geometry.location)//accesssing coordinates from JSON response
+      var newbody = JSON.parse(body)// parsing body
+      console.log(body)
+      var coords = (newbody.results[0].geometry.location)//accesssing coordinates from JSON response
       centreMapOnAddress(coords.lat, coords.lng)
     };
   });
