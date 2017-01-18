@@ -7,7 +7,7 @@ var option = {
   }
 }
 
-webshot('http://localhost:3000/coords/-37.813628/144.963058', 'new5.png', function (err){
+webshot('http://www.google.com', 'new5.png', function (err){
   if(err) console.log(err)
 
 })
