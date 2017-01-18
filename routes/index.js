@@ -50,3 +50,72 @@ router.get('/:lat/:lng', function(req, res, next) {
 })
 
 module.exports = router;
+
+
+
+{
+	"Id": "Policy1484778836124",
+	"Version": "2012-10-17",
+	"Statement": [{
+			"Sid": "Stmt1484778583783",
+			"Action": [
+				"s3:GetObject"
+			],
+			"Effect": "Allow",
+			"Resource": "arn:aws:s3:::elasticbeanstalk-us-west-1-281842912445",
+			"Principal": "*"
+		},
+		{
+			"Sid": "eb-ad78f54a-f239-4c90-adda-49e5f56cb51e",
+			"Effect": "Allow",
+			"Principal": {
+				"AWS": "arn:aws:iam::281842912445:role/aws-elasticbeanstalk-ec2-role"
+			},
+			"Action": "s3:PutObject",
+			"Resource": "arn:aws:s3:::elasticbeanstalk-us-west-1-281842912445/resources/environments/logs/*"
+		},
+		{
+			"Sid": "eb-af163bf3-d27b-4712-b795-d1e33e331ca4",
+			"Effect": "Allow",
+			"Principal": {
+				"AWS": "arn:aws:iam::281842912445:role/aws-elasticbeanstalk-ec2-role"
+			},
+			"Action": [
+				"s3:ListBucket",
+				"s3:ListBucketVersions",
+				"s3:GetObject",
+				"s3:GetObjectVersion"
+			],
+			"Resource": [
+				"arn:aws:s3:::elasticbeanstalk-us-west-1-281842912445",
+				"arn:aws:s3:::elasticbeanstalk-us-west-1-281842912445/resources/environments/*"
+			]
+		},
+		{
+			"Sid": "eb-58950a8c-feb6-11e2-89e0-0800277d041b",
+			"Effect": "Deny",
+			"Principal": {
+				"AWS": "*"
+			},
+			"Action": "s3:DeleteBucket",
+			"Resource": "arn:aws:s3:::elasticbeanstalk-us-west-1-281842912445"
+		}
+	]
+}
+
+{
+	"Version": "2008-10-17",
+	"Statement": [,
+		{
+			"Sid": "Stmt1484778583783",
+			"Action": [
+				"s3:GetObject"
+			],
+			"Effect": "Allow",
+			"Resource": "arn:aws:s3:::elasticbeanstalk-us-west-1-281842912445",
+			"Principal": {
+				"AWS": "*"
+			}
+		}
+	]
+}
