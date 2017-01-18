@@ -12,7 +12,8 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/first/:lat/:lng', function (req, res, next) {
-  webshot('google.com', 'boom!.png', function (err){
+  console.log("hello")
+  webshot('google.com', './boom!.png', function (err){
     if(err) console.log(err)
     console.log("weehee!")
   })
