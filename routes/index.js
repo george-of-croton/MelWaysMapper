@@ -3,7 +3,7 @@ var router = express.Router();
 var webshot = require('webshot')
 var Readable = require('stream').Readable;
 var aws = require('aws-sdk')
-var url = 'https://mysterious-taiga-89115.herokuapp.com/coords'
+var url = 'https://mysterious-taiga-89115.herokuapp.com/coords/'
 var dotenv = require('dotenv').config()
 
 aws.config = {
