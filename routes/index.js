@@ -38,7 +38,7 @@ router.get('/first/:lat/:lng', function(req, res, next) {
 		}, function(err, data) {
 			if (err) return console.log(err);
 
-			res.send(data)
+			res.send(data["Location"])
 		})
 		console.log("weehee!")
 	})
