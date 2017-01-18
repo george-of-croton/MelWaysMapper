@@ -7,7 +7,7 @@ var url = 'http://localhost:3000/coords/'
 
 // * GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index');
+  res.send('Follow the white rabbit');
   console.log(req.body)
 });
 
@@ -16,7 +16,7 @@ router.get('/first/:lat/:lng', function (req, res, next) {
     if(err) console.log(err)
     console.log("weehee!")
   })
-  res.end()
+  res.send("this is what happens")
 })
 
 router.get('/:lat/:lng', function(req, res, next) {
