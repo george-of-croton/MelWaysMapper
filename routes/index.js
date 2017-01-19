@@ -18,16 +18,16 @@ router.get('/', function(req, res, next) {
 	res.send('Follow the white rabbit');
 	console.log(req.body)
 });
-
+// url + req.params.lat + '/' + req.params.lng
 router.get('/first/:lat/:lng', function(req, res, next) {
 	console.log("hello")
-	webshot(url + req.params.lat + '/' + req.params.lng, function(err, stream) {
+	webshot('google.com', function(err, stream) {
 		if (err) console.log(err)
 
 		var s3 = new aws.S3({
 			params: {
 				Bucket: 'elasticbeanstalk-us-west-1-281842912445',
-				Key: 'google.png'
+				Key: req.params.lat + req.params.lng + '.png'
 			}
 		})
 
