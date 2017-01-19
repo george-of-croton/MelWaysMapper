@@ -10,7 +10,7 @@ var url = process.env.REQUESTURLBASE
 aws.config = {
 	"accessKeyId": process.env.AWS_ACCESS_KEY_ID,
 	"secretAccessKey": process.env.AWS_SECRET_ACCESS_KEY,
-	"region": "us-west-1"
+	"region": "ap-southeast-2"
 }
 
 
@@ -28,7 +28,7 @@ router.get('/first/:lat/:lng/:level', function(req, res, next) {
 		console.log("about to instantiate stream")
 		var s3 = new aws.S3({
 			params: {
-				Bucket: 'elasticbeanstalk-us-west-1-281842912445',
+				Bucket: 'camboosticorigano',
 				Key: req.params.lat + '.png'
 			}
 		})
@@ -52,5 +52,12 @@ router.get('/:lat/:lng/:level', function(req, res, next) {
 	var coords = req.params
 	res.render('map', coords)
 })
+
+router.get('/:interface/:lat/:lng/:level', function(req, res, next) {
+	var coords = req.params
+	console.log(req.params.interface)
+	res.render('mapinterface', coords)
+})
+
 
 module.exports = router;

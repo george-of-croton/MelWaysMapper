@@ -21,7 +21,7 @@ function centreMapOnAddress(lat, lon, level) { //this function just follows the 
 	};
 	var marker = new JMarker(point, markerOptions);
 	var lv;
-	if (level) {
+	if (level != '') {
 		lv = level;
 	} else {
 		lv = 13

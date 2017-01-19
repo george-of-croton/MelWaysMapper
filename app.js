@@ -40,15 +40,6 @@ app.get('/', function(req, res) {
 
 })
 
-app.get('/coords/first/:lat/:lng/:level', function(req, res) {
-
-})
-
-app.get('/coords/:lat/:lng/:level', function(req, res) {
-
-})
-
-
 // error handler
 app.use(function(err, req, res, next) {
 	// set locals, only providing error in development
