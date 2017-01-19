@@ -3,8 +3,9 @@ var router = express.Router();
 var webshot = require('webshot')
 var Readable = require('stream').Readable;
 var aws = require('aws-sdk')
-var url = 'https://mysterious-taiga-89115.herokuapp.com/coords/'
 var dotenv = require('dotenv').config()
+var url = process.env.REQUESTURLBASE
+
 
 aws.config = {
 	"accessKeyId": process.env.AWS_ACCESS_KEY_ID,
@@ -19,15 +20,16 @@ router.get('/', function(req, res, next) {
 	console.log(req.body)
 });
 // url + req.params.lat + '/' + req.params.lng
-router.get('/first/:lat/:lng', function(req, res, next) {
+router.get('/first/:lat/:lng/:level', function(req, res, next) {
+	var start = Date.now()
 	console.log("hello")
-	webshot('google.com', function(err, stream) {
+	webshot(url + req.params.lat + '/' + req.params.lng + "/" + req.params.level, function(err, stream) {
 		if (err) console.log(err)
-
+		console.log("about to instantiate stream")
 		var s3 = new aws.S3({
 			params: {
 				Bucket: 'elasticbeanstalk-us-west-1-281842912445',
-				Key: req.params.lat + req.params.lng + '.png'
+				Key: req.params.lat + '.png'
 			}
 		})
 
@@ -37,14 +39,16 @@ router.get('/first/:lat/:lng', function(req, res, next) {
 			Body: readableStream
 		}, function(err, data) {
 			if (err) return console.log(err);
-
+			var end = Date.now()
+			var elapsed = end - start;
+			console.log("time elapsed = " + elapsed / 1000 + "seconds")
 			res.send(data["Location"])
 		})
 		console.log("weehee!")
 	})
 })
 
-router.get('/:lat/:lng', function(req, res, next) {
+router.get('/:lat/:lng/:level', function(req, res, next) {
 	var coords = req.params
 	res.render('map', coords)
 })

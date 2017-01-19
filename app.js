@@ -40,11 +40,11 @@ app.get('/', function(req, res) {
 
 })
 
-app.get('/coords/first/:lat/:lng', function(req, res) {
+app.get('/coords/first/:lat/:lng/:level', function(req, res) {
 
 })
 
-app.get('/coords/:lat/:lng', function(req, res) {
+app.get('/coords/:lat/:lng/:level', function(req, res) {
 
 })
 
