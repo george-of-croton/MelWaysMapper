@@ -11,7 +11,7 @@ var start;
 aws.config = {
 	"accessKeyId": process.env.AWS_ACCESS_KEY_ID,
 	"secretAccessKey": process.env.AWS_SECRET_ACCESS_KEY,
-	"region": "ap-southeast-2"
+	"region": "us-west-1"
 }
 
 var options = {
@@ -55,7 +55,7 @@ function saveMapToCloud(params, response) {
 		console.log("about to instantiate stream")
 		var s3 = new aws.S3({
 			params: {
-				Bucket: 'camboosticorigano',
+				Bucket: 'elasticbeanstalk-us-west-1-281842912445',
 				Key: params.lat + '.png'
 			}
 		})
