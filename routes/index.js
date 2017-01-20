@@ -16,7 +16,8 @@ aws.config = {
 
 var options = {
 	quality: 50,
-	phantomPath: require('phantomjs2').path
+	phantomPath: require('phantomjs2').path,
+	streamType: 'jpeg'
 }
 
 
@@ -56,8 +57,8 @@ function saveMapToCloud(params, response) {
 		console.log("about to instantiate stream")
 		var s3 = new aws.S3({
 			params: {
-				Bucket: 'illegalsanchino',
-				Key: params.lat + '.png'
+				Bucket: 'camboosticorigano',
+				Key: params.lat + '.jpeg'
 			}
 		})
 
