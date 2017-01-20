@@ -15,7 +15,8 @@ aws.config = {
 }
 
 var options = {
-	quality: 50
+	quality: 50,
+	phantomPath: require('phantomjs2').path
 }
 
 
