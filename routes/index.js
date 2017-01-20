@@ -11,7 +11,7 @@ var start;
 aws.config = {
 	"accessKeyId": process.env.AWS_ACCESS_KEY_ID,
 	"secretAccessKey": process.env.AWS_SECRET_ACCESS_KEY,
-	"region": "us-west-1"
+	"region": "us-east-2"
 }
 
 var options = {
@@ -57,7 +57,7 @@ function saveMapToCloud(params, response) {
 		console.log("about to instantiate stream")
 		var s3 = new aws.S3({
 			params: {
-				Bucket: 'illegalsanchino',
+				Bucket: 'ludacrischristie',
 				Key: params.lat + '.jpeg'
 			}
 		})
