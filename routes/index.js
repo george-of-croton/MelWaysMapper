@@ -5,6 +5,7 @@ var Readable = require('stream').Readable;
 var aws = require('aws-sdk')
 var dotenv = require('dotenv').config()
 var url = process.env.REQUESTURLBASE
+var start;
 
 
 aws.config = {
@@ -21,7 +22,7 @@ router.get('/', function(req, res, next) {
 });
 // url + req.params.lat + '/' + req.params.lng
 router.get('/first/:lat/:lng/:level', function(req, res, next) {
-	var start = Date.now()
+	start = Date.now()
 	console.log("hello")
 	saveMapToCloud(req.params, res)
 })
