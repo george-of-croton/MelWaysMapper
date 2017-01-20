@@ -23,29 +23,7 @@ router.get('/', function(req, res, next) {
 router.get('/first/:lat/:lng/:level', function(req, res, next) {
 	var start = Date.now()
 	console.log("hello")
-	webshot(url + req.params.lat + '/' + req.params.lng + "/" + req.params.level, function(err, stream) {
-		if (err) console.log(err)
-		console.log("about to instantiate stream")
-		var s3 = new aws.S3({
-			params: {
-				Bucket: 'camboosticorigano',
-				Key: req.params.lat + '.png'
-			}
-		})
-
-		var readableStream = new Readable().wrap(stream);
-
-		s3.upload({
-			Body: readableStream
-		}, function(err, data) {
-			if (err) return console.log(err);
-			var end = Date.now()
-			var elapsed = end - start;
-			console.log("time elapsed = " + elapsed / 1000 + "seconds")
-			res.send(data["Location"])
-		})
-		console.log("weehee!")
-	})
+	saveMapToCloud(req.params, res)
 })
 
 router.get('/:lat/:lng/:level', function(req, res, next) {
@@ -59,5 +37,37 @@ router.get('/:interface/:lat/:lng/:level', function(req, res, next) {
 	res.render('mapinterface', coords)
 })
 
+router.get('/:interface/:lat/:lng/:level/:centrelat/:centrelng', function(req, res, next) {
+	var coords = req.params
+	console.log(req.params.interface)
+	res.render('mapinterface', coords)
+})
+
+function saveMapToCloud(params, response) {
+
+	webshot(url + params.lat + '/' + params.lng + "/" + params.level, function(err, stream) {
+		if (err) console.log(err)
+		console.log("about to instantiate stream")
+		var s3 = new aws.S3({
+			params: {
+				Bucket: 'camboosticorigano',
+				Key: params.lat + '.png'
+			}
+		})
+
+		var readableStream = new Readable().wrap(stream);
+
+		s3.upload({
+			Body: readableStream
+		}, function(err, data) {
+			if (err) return console.log(err);
+			var end = Date.now()
+			var elapsed = end - start;
+			console.log("time elapsed = " + elapsed / 1000 + "seconds")
+			response.send(data["Location"])
+		})
+		console.log("weehee!")
+	})
+}
 
 module.exports = router;
