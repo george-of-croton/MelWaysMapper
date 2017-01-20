@@ -1,5 +1,5 @@
-var request = require('request')
-var dotenv = require('dotenv')
+// var request = require('request')
+// var dotenv = require('dotenv')
 document.onload = function() {
 	var lon = document.getElementById('lon')
 	var lat = document.getElementById('lat')
@@ -44,16 +44,19 @@ function grabMapAsIs(lat, lon) {
 		zoom: mappy.getBoundsZoomLevel(mappy.getBounds())
 	}
 
-	request.get(url, function(req, res, next) {
-		console.log(res.body, "response body")
-		console.log(typeof(res.body))
-		var img = document.createElement("img")
-		img.src = res.body
-		document.body.appendChild(img)
-	})
+	// 	request.get(url, function(req, res, next) {
+	// 		console.log(res.body, "response body")
+	// 		console.log(typeof(res.body))
+	// 		var img = document.createElement("img")
+	// 		img.src = res.body
+	// 		document.body.appendChild(img)
+	// 	})
+	//
+	// 	var url = function() {
+	// 		return process.env.REQUESTURLBASE + "/" + lat + '/' + lon + '/' + mapState.zoom + "/" + mapState.centre.lat + "/" + mapState.centre.lon
+	// 	}
+	//
+	// }
 
-	var url = function() {
-		return process.env.REQUESTURLBASE + "/" + lat + '/' + lon + '/' + mapState.zoom + "/" + mapState.centre.lat + "/" + mapState.centre.lon
-	}
-
-}
+	//
+	// }
