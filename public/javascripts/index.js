@@ -1,10 +1,5 @@
 // var request = require('request')
 // var dotenv = require('dotenv')
-window.onload = function() {
-	var lon = document.getElementById('lon')
-	var lat = document.getElementById('lat')
-
-}
 var mappy;
 
 var centreMapOnAddress = function(lat, lon, level) { //this function just follows the steps on http://www.street-directory.com.au/sd3/mapAPI/index.php
@@ -55,8 +50,4 @@ function grabMapAsIs(lat, lon) {
 		return process.env.REQUESTURLBASE + "/" + lat + '/' + lon + '/' + mapState.zoom + "/" + mapState.centre.lat + "/" + mapState.centre.lon
 	}
 
-}
-
-
-}
 }
