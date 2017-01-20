@@ -3,9 +3,10 @@ extends layout
 block content
 
     script(src="https://js.street-directory.com.au/jmap.php" type="text/javascript")
-    button(type="button" onclick='grabMapAsIs()') save
+    button(type="button"'id="grabby"' onclick='grabMapAsIs()') save
     button(type="button" onclick='refreshMap(#{lat}, #{lng})') refresh
     div(id="map-canvas" style="width:1000px; height:750px; position:absolute;")
     script(id="script" src="/javascripts/index.js")
+    script(id="script" src="/javascripts/bundle.js")
     script.
       window.onload = centreMapOnAddress(#{lat}, #{lng}, #{level})

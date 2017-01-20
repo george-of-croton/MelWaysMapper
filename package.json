@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "build": "browserify ./public/javascripts/index.js > ./public/javascripts/bundle.js"
+    "build": "browserify ./public/javascripts/getMap.js > ./public/javascripts/bundle.js"
   },
   "dependencies": {
     "aws-sdk": "^2.7.24",
