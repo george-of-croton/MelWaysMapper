@@ -14,6 +14,10 @@ aws.config = {
 	"region": "ap-southeast-2"
 }
 
+var options = {
+	quality: 50
+}
+
 
 // * GET home page. */
 router.get('/', function(req, res, next) {
@@ -46,7 +50,7 @@ router.get('/:interface/:lat/:lng/:level/:centrelat/:centrelng', function(req, r
 
 function saveMapToCloud(params, response) {
 
-	webshot(url + params.lat + '/' + params.lng + "/" + params.level, function(err, stream) {
+	webshot(url + params.lat + '/' + params.lng + "/" + params.level, options, function(err, stream) {
 		if (err) console.log(err)
 		console.log("about to instantiate stream")
 		var s3 = new aws.S3({
