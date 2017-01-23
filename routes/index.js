@@ -19,7 +19,7 @@ aws.config = {
 var options = {
 	quality: 100,
 	phantomPath: require('phantomjs2').path,
-	streamType: 'jpeg'
+	streamType: 'png'
 }
 
 
@@ -33,8 +33,7 @@ router.get('/first/:lat/:lng/:level', function(req, res, next) {
 	start = Date.now()
 	var params = req.params
 	webshot(url + params.lat + '/' + params.lng + "/" + params.level, {
-			streamType: 'jpeg',
-			quality: 100
+			streamType: 'png'
 		},
 		function(err, stream) {
 			if (err) console.log(err)
