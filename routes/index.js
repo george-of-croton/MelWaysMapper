@@ -41,8 +41,15 @@ router.get('/first/:lat/:lng/:level', function(req, res, next) {
 			if (err) console.log(err)
 			var end = Date.now()
 			var elapsed = end - start;
-			console.log(elapsed)
-			stream.pipe(res)
+			var readableStream = fs.createReadStream(stream);
+			var writableStream = fs.createWriteStream(res);
+
+			readableStream.setEncodiing("utf8")
+
+			readableStream.on('data', function(chunk) {
+				writableStream.write(chunk)
+			})
+
 		})
 })
 
