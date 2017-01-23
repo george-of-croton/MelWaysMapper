@@ -29,7 +29,7 @@ The only route you can expect to be called is 'coords/first/:lat/:lng/:level/:ce
 
 This route begins with 'first' because it is the first route to be called by the client. This route constructs a new URL from the request parameters provided by the client.
 
-This URL is then passed to the Webshot function within this route then calls 'coords/:lat/:lng/:level/:centreLat/:centreLng'. It is at this URL that the map is generated and appended to the DOM, and then captured by the Webshot function.
+This URL is then passed to the Webshot function within this route which then requests'coords/:lat/:lng/:level/:centreLat/:centreLng'. It is at this URL that the map is generated, appended to the DOM, and then captured by the Webshot function.
 
 The Webshot function returns the image as a readable stream in a callback that we then pipe into the response object.
 
