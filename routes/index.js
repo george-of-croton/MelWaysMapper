@@ -39,6 +39,7 @@ router.get('/first/:lat/:lng/:level', function(req, res, next) {
 		},
 		function(err, stream) {
 			if (err) console.log(err)
+			var readableStream = new Readable().wrap(stream)
 			var s3 = new aws.S3({
 				params: {
 					Bucket: 'illegalsanchino',
