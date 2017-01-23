@@ -64,3 +64,6 @@ If you wish to update the app you will need to redeploy to Amazon.
 A pretty good tutorial can be found here: http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create_deploy_nodejs_express.html
 
 You will need to install the elasticbeanstalk Command Line tool which provides a git-like workflow as shown in the image below.
+
+![deploytoamazon](https://cloud.githubusercontent.com/assets/16638647/22193214/eab2f3f8-e18d-11e6-8958-e68c0227a1f4.png)
+
