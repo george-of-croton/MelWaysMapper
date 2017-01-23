@@ -13,8 +13,7 @@ var start;
 
 aws.config = {
 	"accessKeyId": process.env.AWS_ACCESS_KEY_ID,
-	"secretAccessKey": process.env.AWS_SECRET_ACCESS_KEY,
-	"region": "us-east-2"
+	"secretAccessKey": process.env.AWS_SECRET_ACCESS_KEY
 }
 
 var options = {
@@ -47,8 +46,6 @@ router.get('/first/:lat/:lng/:level', function(req, res, next) {
 				}
 			})
 
-			var readableStream = new Readable().wrap(stream);
-
 			s3.upload({
 				Body: readableStream
 			}, function(err, data) {
@@ -56,7 +53,7 @@ router.get('/first/:lat/:lng/:level', function(req, res, next) {
 				var end = Date.now()
 				var elapsed = end - start;
 				console.log("time elapsed = " + elapsed / 1000 + "seconds")
-				response.send(data["Location"])
+				res.send(data["Location"])
 			})
 			// stream.pipe(res)
 		})
