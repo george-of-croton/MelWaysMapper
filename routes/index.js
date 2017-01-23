@@ -17,7 +17,7 @@ aws.config = {
 }
 
 var options = {
-	quality: 50,
+	quality: 100,
 	phantomPath: require('phantomjs2').path,
 	streamType: 'jpeg'
 }
