@@ -7,7 +7,7 @@ var aws = require('aws-sdk')
 var dotenv = require('dotenv').config()
 var wrap = require('readable-wrap');
 
-var url = process.env.REQUESTURLBASE
+var url = 'http: //node-express-env.thnv9gnbmt.us-west-2.elasticbeanstalk.com/coords/'
 var start;
 
 
