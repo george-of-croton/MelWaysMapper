@@ -6,10 +6,10 @@ The app uses the webshot API to provide functionality similar to google maps sta
 
 
 ## technology stack
--express.js
--jade (barely)
--Amazon elasticbeanstalk
--node.js
+- express.js
+- jade (barely)
+- Amazon elasticbeanstalk
+- node.js
 
 
 ## Basic usage
