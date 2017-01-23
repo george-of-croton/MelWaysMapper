@@ -32,11 +32,15 @@ router.get('/', function(req, res, next) {
 
 router.get('/first/:lat/:lng/:level', function(req, res, next) {
 	var params = req.params
-	webshot(url + params.lat + '/' + params.lng + "/" + params.level, function(err, stream) {
-		if (err) console.log(err)
-		console.log("about to instantiate stream")
-		stream.pipe(res)
-	})
+	webshot(url + params.lat + '/' + params.lng + "/" + params.level, {
+			streamType: 'jpeg',
+			quality: 100
+		},
+		function(err, stream) {
+			if (err) console.log(err)
+			console.log("about to instantiate stream")
+			stream.pipe(res)
+		})
 })
 
 router.get('/:lat/:lng/:level', function(req, res, next) {
