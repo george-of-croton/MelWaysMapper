@@ -2,9 +2,9 @@
 // var dotenv = require('dotenv')
 var mappy;
 
-var centreMapOnAddress = function(lat, lon, level) { //this function just follows the steps on http://www.street-directory.com.au/sd3/mapAPI/index.php
+var centreMapOnAddress = function(lat, lon, level, centreLat, centreLng) { //this function just follows the steps on http://www.street-directory.com.au/sd3/mapAPI/index.php
 	var myMap = new JMap(document.getElementById("map-canvas"));
-	var myLonLat = new JLonLat(lon, lat - .0010);
+	var myLonLat = new JLonLat(centrelon, centrelat - .0010);
 	var point = new JLonLat(lon, lat);
 	var icon = new JIcon(J_DEFAULT_ICON);
 	icon.iconSize = {

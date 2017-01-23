@@ -29,10 +29,10 @@ router.get('/', function(req, res, next) {
 	console.log(req.body)
 });
 
-router.get('/first/:lat/:lng/:level', function(req, res, next) {
+router.get('/first/:lat/:lng/:level/:centreLat/:centreLng', function(req, res, next) {
 	start = Date.now()
 	var params = req.params
-	webshot(url + params.lat + '/' + params.lng + "/" + params.level, {
+	webshot(url + params.lat + '/' + params.lng + "/" + params.level + "/" + params.centreLat + "/" + params.centreLng, {
 			streamType: 'png'
 		},
 		function(err, stream) {
@@ -58,7 +58,7 @@ router.get('/first/:lat/:lng/:level', function(req, res, next) {
 		})
 })
 
-router.get('/:lat/:lng/:level', function(req, res, next) {
+router.get('/:lat/:lng/:level/:centreLat/:centreLng', function(req, res, next) {
 	var coords = req.params
 	res.render('map', coords)
 })
