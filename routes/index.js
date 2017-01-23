@@ -39,17 +39,7 @@ router.get('/first/:lat/:lng/:level', function(req, res, next) {
 		},
 		function(err, stream) {
 			if (err) console.log(err)
-			var end = Date.now()
-			var elapsed = end - start;
-			var readableStream = fs.createReadStream(stream);
-			var writableStream = fs.createWriteStream(res);
-
-			readableStream.setEncodiing("utf8")
-
-			readableStream.on('data', function(chunk) {
-				writableStream.write(chunk)
-			})
-
+			stream.pipe(res)
 		})
 })
 
