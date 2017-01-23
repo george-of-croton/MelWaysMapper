@@ -33,7 +33,7 @@ This URL is then passed to the Webshot function within this route then calls 'co
 
 The Webshot function returns the image as a readable stream in a callback that we then pipe into the response object.
 
-##ALTERNATIVELY:
+####ALTERNATIVELY:
 
 Instead of streaming the image back to the caller you can upload the image to an Amazon s3 bucket. The code for uploading to amazon is commented out in Webshot callback. Simply uncomment (and comment out the line with stream.pipe(res) ) and enter the details of your amazon bucket (API keys are stored in the .env file and accessed using the dotenv module).
 
@@ -54,3 +54,16 @@ The code consuming the StreetDirectory API is kept at /public/javascripts/index.
 it contains a single function, centreMapOnAddress(), which takes 5 arguments, subject latitude, subject longitude, zoom level, centrelatitude and centre longitude.
 
 /public/javascripts/index.js is reference in /views/map.jade where the reqest parameters from the client are passed to centreMapOnAddress.
+
+### Deployment
+
+The is deployed on Amazon's elasticbeanstalk service.
+
+If you wish to update the app you will need to redeploy to Amazon.
+
+A pretty good tutorial can be found here: http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create_deploy_nodejs_express.html
+
+You will need to install the elasticbeanstalk Command Line tool which provides a git-like workflow as shown in the image below.
+
+![alt tag](
+https://s3-ap-southeast-2.amazonaws.com/elasticbeanstalk-ap-southeast-2-281842912445/deploytoAmazon.png)
