@@ -65,5 +65,4 @@ A pretty good tutorial can be found here: http://docs.aws.amazon.com/elasticbean
 
 You will need to install the elasticbeanstalk Command Line tool which provides a git-like workflow as shown in the image below.
 
-![alt tag](
-https://s3-ap-southeast-2.amazonaws.com/elasticbeanstalk-ap-southeast-2-281842912445/deploytoAmazon.png)
+![alt tag](https://s3-ap-southeast-2.amazonaws.com/elasticbeanstalk-ap-southeast-2-281842912445/deploytoAmazon.png)
