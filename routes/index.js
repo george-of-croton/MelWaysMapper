@@ -2,8 +2,11 @@ var express = require('express');
 var router = express.Router();
 var webshot = require('webshot')
 var Readable = require('stream').Readable;
+var fs = require('fs')
 var aws = require('aws-sdk')
 var dotenv = require('dotenv').config()
+var wrap = require('readable-wrap');
+
 var url = process.env.REQUESTURLBASE
 var start;
 
@@ -26,11 +29,14 @@ router.get('/', function(req, res, next) {
 	res.send('Follow the white rabbit');
 	console.log(req.body)
 });
-// url + req.params.lat + '/' + req.params.lng
+
 router.get('/first/:lat/:lng/:level', function(req, res, next) {
-	start = Date.now()
-	console.log("hello")
-	saveMapToCloud(req.params, res)
+	var params = req.params
+	webshot(url + params.lat + '/' + params.lng + "/" + params.level, function(err, stream) {
+		if (err) console.log(err)
+		console.log("about to instantiate stream")
+		stream.pipe(res)
+	})
 })
 
 router.get('/:lat/:lng/:level', function(req, res, next) {
@@ -50,31 +56,5 @@ router.get('/:interface/:lat/:lng/:level/:centrelat/:centrelng', function(req, r
 	res.render('mapinterface', coords)
 })
 
-function saveMapToCloud(params, response) {
-
-	webshot(url + params.lat + '/' + params.lng + "/" + params.level, options, function(err, stream) {
-		if (err) console.log(err)
-		console.log("about to instantiate stream")
-		var s3 = new aws.S3({
-			params: {
-				Bucket: 'ludacrischristie',
-				Key: params.lat + '.jpeg'
-			}
-		})
-
-		var readableStream = new Readable().wrap(stream);
-
-		s3.upload({
-			Body: readableStream
-		}, function(err, data) {
-			if (err) return console.log(err);
-			var end = Date.now()
-			var elapsed = end - start;
-			console.log("time elapsed = " + elapsed / 1000 + "seconds")
-			response.send(data["Location"])
-		})
-		console.log("weehee!")
-	})
-}
 
 module.exports = router;

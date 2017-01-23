@@ -1,5 +1,8 @@
 var request = require('request')
+var fs = require('fs')
 
-request.get('http://localhost:3000/coords/first/-37.829787/144.980803/13', function(req, res) {
-	console.log(res.body)
-})
+
+request.get({
+	url: 'http://localhost:3000/coords/first/-39.830787/144.980803/13',
+	encoding: 'binary'
+}).pipe(fs.createWriteStream('./test.png'))
