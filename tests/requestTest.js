@@ -1,5 +1,6 @@
 var request = require('request')
+var fs = require('fs')
 
-request.get('https://mysterious-taiga-89115.herokuapp.com/coords/first/-37.829887/144.980803/13', function(req, res) {
-	console.log(res.body)
-})
+request.get({
+	url: 'http://node-express-env.thnv9gnbmt.us-west-2.elasticbeanstalk.com/coords/first/-37/145/13',
+}).pipe(fs.createWriteStream('./test.jpeg'))
