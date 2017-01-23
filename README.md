@@ -25,7 +25,7 @@ In production this command is run automatically by Amazon. You can configure the
 ### Routes
 Routes are kept under /routes/index.js
 
-The only route you can expected to be called is 'coords/first/:lat/:lng/:level/:centreLat/:centreLng'.
+The only route you can expect to be called is 'coords/first/:lat/:lng/:level/:centreLat/:centreLng'.
 
 This route begins with 'first' because it is the first route to be called by the client. This route constructs a new URL from the request parameters provided by the client.
 
