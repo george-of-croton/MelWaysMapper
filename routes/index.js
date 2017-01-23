@@ -31,6 +31,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/first/:lat/:lng/:level', function(req, res, next) {
+	start = Date.now()
 	var params = req.params
 	webshot(url + params.lat + '/' + params.lng + "/" + params.level, {
 			streamType: 'jpeg',
@@ -38,7 +39,9 @@ router.get('/first/:lat/:lng/:level', function(req, res, next) {
 		},
 		function(err, stream) {
 			if (err) console.log(err)
-			console.log("about to instantiate stream")
+			var end = Date.now()
+			var elapsed = end - start;
+			console.log(elapsed)
 			stream.pipe(res)
 		})
 })
