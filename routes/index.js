@@ -39,25 +39,25 @@ router.get('/first/:lat/:lng/:level', function(req, res, next) {
 		},
 		function(err, stream) {
 			if (err) console.log(err)
-			// var s3 = new aws.S3({
-			// 	params: {
-			// 		Bucket: 'illegalsanchino',
-			// 		Key: params.lat + '.png'
-			// 	}
-			// })
-			//
-			// var readableStream = new Readable().wrap(stream);
-			//
-			// s3.upload({
-			// 	Body: readableStream
-			// }, function(err, data) {
-			// 	if (err) return console.log(err);
-			// 	var end = Date.now()
-			// 	var elapsed = end - start;
-			// 	console.log("time elapsed = " + elapsed / 1000 + "seconds")
-			// 	response.send(data["Location"])
-			// })
-			stream.pipe(res)
+			var s3 = new aws.S3({
+				params: {
+					Bucket: 'illegalsanchino',
+					Key: params.lat + '.png'
+				}
+			})
+
+			var readableStream = new Readable().wrap(stream);
+
+			s3.upload({
+				Body: readableStream
+			}, function(err, data) {
+				if (err) return console.log(err);
+				var end = Date.now()
+				var elapsed = end - start;
+				console.log("time elapsed = " + elapsed / 1000 + "seconds")
+				response.send(data["Location"])
+			})
+			// stream.pipe(res)
 		})
 })
 
