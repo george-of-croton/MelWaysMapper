@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "build": "browserify ./public/javascripts/getMap.js > ./public/javascripts/bundle.js"
+    "build": "browserify ./public/javascripts/getMap.js > ./public/javascripts/bundle.js",
+    "test": "tape tests/requestTest.js | tap-spec" 
   },
   "dependencies": {
     "aws-sdk": "^2.7.24",
@@ -23,6 +24,10 @@
     "request": "^2.79.0",
     "serve-favicon": "~2.3.0",
     "stream": "0.0.2",
+    "tape": "^4.6.3",
     "webshot": "^0.18.0"
+  },
+  "devDependencies": {
+    "tap-spec": "^4.1.1"
   }
 }
