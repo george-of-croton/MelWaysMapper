@@ -25,11 +25,11 @@ In production this command is run automatically by Amazon. You can configure the
 ### Routes
 Routes are kept under /routes/index.js
 
-The only route you can expected to be called is 'coords/first/:lat/:lng/:level/:centreLat/:centreLng'.
+The only route you can expect to be called is 'coords/first/:lat/:lng/:level/:centreLat/:centreLng'.
 
 This route begins with 'first' because it is the first route to be called by the client. This route constructs a new URL from the request parameters provided by the client.
 
-This URL is then passed to the Webshot function within this route then calls 'coords/:lat/:lng/:level/:centreLat/:centreLng'. It is at this URL that the map is generated and appended to the DOM, and then captured by the Webshot function.
+This URL is then passed to the Webshot function within this route which then requests'coords/:lat/:lng/:level/:centreLat/:centreLng'. It is at this URL that the map is generated, appended to the DOM, and then captured by the Webshot function.
 
 The Webshot function returns the image as a readable stream in a callback that we then pipe into the response object.
 
@@ -64,3 +64,6 @@ If you wish to update the app you will need to redeploy to Amazon.
 A pretty good tutorial can be found here: http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create_deploy_nodejs_express.html
 
 You will need to install the elasticbeanstalk Command Line tool which provides a git-like workflow as shown in the image below.
+
+![deploytoamazon](https://cloud.githubusercontent.com/assets/16638647/22193214/eab2f3f8-e18d-11e6-8958-e68c0227a1f4.png)
+
