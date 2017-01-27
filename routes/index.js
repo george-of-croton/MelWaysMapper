@@ -17,8 +17,22 @@ router.get('/', function(req, res, next) {
 router.get('/first/:lat/:lng/:level/:centreLat/:centreLng', function(req, res, next) {
 	start = Date.now()
 	var params = req.params
+	var options = {
+		// shotOffset: {
+		// 	left: 10,
+		// 	right: 10,
+		// 	top: 10,
+		// 	bottom: 10
+		// }
+	}
 	webshot(url + params.lat + '/' + params.lng + "/" + params.level + "/" + params.centreLat + "/" + params.centreLng, {
-			streamType: 'png'
+			streamType: 'jpeg',
+			shotOffset: {
+				left: 10,
+				right: 26,
+				top: 10,
+				bottom: 20
+			}
 		},
 		function(err, stream) {
 			if (err) console.log(err)
