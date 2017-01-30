@@ -5,9 +5,10 @@ var centreMapOnAddress = function(lat, lon, level, centreLat, centreLng) { //thi
 	var point = new JLonLat(lon, lat);
 	var icon = new JIcon(J_DEFAULT_ICON);
 	icon.iconSize = {
-		w: 50,
+		w: 95,
 		h: 50
 	}
+	icon.image = 'https://s3-ap-southeast-2.amazonaws.com/elasticbeanstalk-ap-southeast-2-281842912445/icon.png'
 	var markerOptions = {
 		icon: icon,
 		draggable: false
@@ -22,4 +23,4 @@ var centreMapOnAddress = function(lat, lon, level, centreLat, centreLng) { //thi
 
 	myMap.setCenter(myLonLat, lv, J_AUSWAY_MAP);
 	myMap.addOverlay(marker);
-}
+};
