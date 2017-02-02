@@ -16,9 +16,9 @@ var centreMapOnAddress = function(lat, lon, level, centreLat, centreLng) { //thi
 	var marker = new JMarker(point, markerOptions);
 	var lv;
 	if (level != '') {
-		lv = level + 1;
+		lv = level -1;
 	} else {
-		lv = 12
+		lv = 13
 	}
 
 	myMap.setCenter(myLonLat, lv, J_AUSWAY_MAP);
