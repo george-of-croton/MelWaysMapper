@@ -14,13 +14,9 @@ var centreMapOnAddress = function(lat, lon, level, centreLat, centreLng) { //thi
 		draggable: false
 	};
 	var marker = new JMarker(point, markerOptions);
-	var lv;
-	if (level != '') {
-		lv = level - 1;
-	} else {
-		lv = 12
-	}
+	lv = 14
+}
 
-	myMap.setCenter(myLonLat, lv, J_AUSWAY_MAP);
-	myMap.addOverlay(marker);
+myMap.setCenter(myLonLat, lv, J_AUSWAY_MAP);
+myMap.addOverlay(marker);
 };
