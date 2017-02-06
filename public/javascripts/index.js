@@ -1,8 +1,8 @@
 var centreMapOnAddress = function(lat, lon, level, centreLat, centreLng) { //this function just follows the steps on http://www.street-directory.com.au/sd3/mapAPI/index.php
 	var myMap = new JMap(document.getElementById("map-canvas"));
-	var myLonLat = new JLonLat(centreLng, centreLat - 0.2);
+	var myLonLat = new JLonLat(centreLng, centreLat);
 	// var myLonLat = new JLonLat(centreLng, centreLat);
-	var point = new JLonLat(lon, lat);
+	var point = new JLonLat(lon - 0.00049, lat + 0.0002);
 	var icon = new JIcon(J_DEFAULT_ICON);
 	icon.iconSize = {
 		w: 120,
