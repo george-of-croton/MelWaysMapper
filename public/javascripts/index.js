@@ -15,6 +15,6 @@ var centreMapOnAddress = function(lat, lon, level, centreLat, centreLng) { //thi
 	};
 	var marker = new JMarker(point, markerOptions);
 
-	myMap.setCenter(myLonLat, level, J_AUSWAY_MAP);
+	myMap.setCenter(myLonLat, level - 2, J_AUSWAY_MAP);
 	myMap.addOverlay(marker);
 };
