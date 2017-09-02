@@ -1,6 +1,6 @@
-##Melways Map Generator
+## Melways Map Generator
 
-#A webservice I developed for my employer to automatically generate and save maps from Melways.com
+# A webservice I developed for my employer to automatically generate and save maps from Melways.com
 
 The app uses the webshot API to provide functionality similar to google maps static maps, where a user can provide an address or coordinates and receive an image of the map. The app overcomes the problem of saving melways map which are provided as a series of small .png tiles, not a single image. The app had to be low maintenance and simple enough for future devs to manage easily.
 
@@ -33,7 +33,7 @@ This URL is then passed to the Webshot function within this route which then req
 
 The Webshot function returns the image as a readable stream in a callback that we then pipe into the response object.
 
-####ALTERNATIVELY:
+#### ALTERNATIVELY:
 
 Instead of streaming the image back to the caller you can upload the image to an Amazon s3 bucket. The code for uploading to amazon is commented out in Webshot callback. Simply uncomment (and comment out the line with stream.pipe(res) ) and enter the details of your amazon bucket (API keys are stored in the .env file and accessed using the dotenv module).
 
